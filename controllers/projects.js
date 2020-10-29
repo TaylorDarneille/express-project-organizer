@@ -8,6 +8,7 @@ router.post('/', (req, res) => {
     name: req.body.name,
     githubLink: req.body.githubLink,
     deployLink: req.body.deployedLink,
+    category: req.body.category,
     description: req.body.description
   })
   .then((project) => {

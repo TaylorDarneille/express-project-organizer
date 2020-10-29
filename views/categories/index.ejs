@@ -1,0 +1,18 @@
+<h1>Project Organizer</h1>
+
+<h2>Categories</h2>
+<hr>
+
+<% if (categories.length < 1) { %>
+  <h4>Better get coding, I've no projects!</h4>
+<% } %>
+
+<% categories.forEach(function(category) { %>
+  <div class="well">
+    <h2>
+      <a href=""><%= category.name %></a>
+    </h2>
+  </div>
+<% }); %>
+
+<a href="/">&larr; Back Home</a>
