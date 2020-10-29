@@ -20,8 +20,9 @@ router.post('/', (req, res) => {
         name: categoryName
       }
     })
-    .then(foundCategory => {
+    .then(([category, created]) => {
       //console.log(`The categoy for ${project.name} is ${foundCategory}`)
+      createdProject.addCategory(category)
       res.redirect('/')
     
     })
