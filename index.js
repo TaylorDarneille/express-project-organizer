@@ -25,7 +25,7 @@ app.get('*', (req, res) => {
   res.render('main/404')
 })
 
-let server = app.listen(process.env.PORT || 3000, function() {
+let server = app.listen(process.env.PORT || 8000, function() {
   console.log(`you're listening to the smooth sounds of port ${process.env.PORT}`)
 })
 
