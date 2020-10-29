@@ -24,9 +24,9 @@ app.use('/projects', require('./controllers/projects'))
 app.get('*', (req, res) => {
   res.render('main/404')
 })
-
-let server = app.listen(process.env.PORT || 3000, function() {
-  console.log(`you're listening to the smooth sounds of port ${process.env.PORT}`)
+const port = process.env.PORT || 3000;
+let server = app.listen(port, function() {
+  console.log(`you're listening to the smooth sounds of port ${port}`)
 })
 
 module.exports = server
