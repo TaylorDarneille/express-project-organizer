@@ -21,6 +21,27 @@ app.get('/', (req, res) => {
 
 app.use('/projects', require('./controllers/projects'))
 
+
+
+// app.get('/categories', require('./controllers/categories'))
+app.get("/categories", (req,res)=> {
+  db.category.findAll()
+  .then((foundCategories) =>{
+    console.log(foundCategories)
+    res.render('categories/index.ejs', {foundCategories: foundCategories})
+  })
+})
+
+app.get("/categories/:idx", (req,res)=> {
+  db.category.findOne({
+    where: {
+      id: req.params.idx
+    }
+  }).then(foundId=>{
+    console.log(foundId)
+  })
+})
+
 app.get('*', (req, res) => {
   res.render('main/404')
 })
