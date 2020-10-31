@@ -1,5 +1,6 @@
 var db = require('./models')
 var async = require('async')
+
 // Create a category: Category model must exist and be migrated
 
 // db.category.create({
@@ -25,34 +26,39 @@ db.project.create({
     db.category.findOrCreate({
       where: { name: cat }
     })
-    .spread((category, wasCreated) => {
+    .then(([category, wasCreated]) => {
       project.addCategory(category)
-      .then(() => {
-        // res.redirect, or whatevs
-        console.log('done adding', cat)
-        done()
-      })
     })
-  }, () => {
+    .then(() => {
+      // res.redirect, or whatevs
+      console.log('done adding', cat)
+      done()
+    })
+    .catch(err =>{
+      console.log(err)
+    })
+  
+  }), () => {
     console.log('EVERYTHING is done. Now redirect or something')
-  })
-
-
-
-
-
-  // TIMING DOESNOT WORK
-  // cats.forEach((cat) => {
-  //   db.category.findOrCreate({
-  //     where: { name: cat }
-  //   })
-  //   .spread((category, wasCreated) => {
-  //     project.addCategory(category)
-  //     .then(() => {
-  //       // res.redirect, or whatevs
-  //       console.log('done adding', cat)
-  //     })
-  //   })
-  // })
-  // console.log('redirect or something')
+  }
 })
+
+
+
+
+
+//   // TIMING DOESNOT WORK
+//   cats.forEach((cat) => {
+//     db.category.findOrCreate({
+//       where: { name: cat }
+//     })
+//     .spread((category, wasCreated) => {
+//       project.addCategory(category)
+//       .then(() => {
+//         // res.redirect, or whatevs
+//         console.log('done adding', cat)
+//       })
+//     })
+//   })
+//   console.log('redirect or something')
+// })
