@@ -6,6 +6,7 @@ var async = require('async')
 //   name: 'node'
 // }).then(function(category) {
 //   console.log(category.get())
+//   console.log(category.id)
 // })
 
 // Create a project and use the helper function create<ModelName> to create a category
@@ -25,7 +26,7 @@ db.project.create({
     db.category.findOrCreate({
       where: { name: cat }
     })
-    .spread((category, wasCreated) => {
+    .then(([category, wasCreated]) => {
       project.addCategory(category)
       .then(() => {
         // res.redirect, or whatevs

@@ -1,0 +1,10 @@
+<h1>Categories</h1>
+
+    <% categoryList.forEach(category=> { %>
+        <div class='well'>
+            <h2> 
+                <a href='/projects/categories/<%= category.id %>'>  <%= category.name %> </a>
+            </h2>
+
+        </div>
+    <% }) %>
