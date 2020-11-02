@@ -60,6 +60,7 @@ router.get('/:id', (req, res) => {
 
 //PUT /projects/:id - add category to existing project
 //REFERENCE ROUTE STARTING IN LINE 6
+//FIND OR CREATE CATEGORY, THEN FIND PROJECT, THEN ASSOCIATE CATEGORY TO PROJECT
 router.post('/:id', (req, res) => {
   let projectId = parseInt(req.params.id)
   let submittedName = req.body.category
@@ -72,7 +73,15 @@ router.post('/:id', (req, res) => {
   .then(([category, created]) => {
     //console.log(`The categoy for ${project.name} is ${foundCategory}`)
     //createdProject.addCategory(category)
-    res.redirect('/')})
+    db.project.findOne({
+      where: {id: projectId}
+    })
+    .then(project => {
+      project.addCategory(category)
+      res.redirect(`/projects/${projectId}`)
+    })
+    //res.redirect('/')
+  })
   .catch((error) => {
     res.status(400).render('main/404')
     console.log(error)
