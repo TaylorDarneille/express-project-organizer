@@ -78,19 +78,33 @@ router.put('/:id', (req,res)=> {
     where: {id: req.body.id}
   })
   //------ This part is having issues -------
-  // .then((project)=>{
-  //   db.category.findOrCreate({
-  //     where: {name: req.body.category}
-  //   })
-  //   .then(([category,created])=>{
-  //     project.addCategory(category)
-  //   })
-  //   .catch(err =>{
-  //     console.log(err)
-  //   })
-  // })
+  .then((project)=>{
+    db.category.findOrCreate({
+      where: {name: req.body.category}
+    })
+    .then(([category,created])=>{
+      project.addCategory(category)
+    })
+    .catch(err =>{
+      console.log(err)
+    })
+  })
   .catch(err => {
     console.log(err)
+  })
+  res.redirect(`/projects/${req.body.id}`)
+})
+
+// DELETE /project/:id
+router.delete('/:id', (req,res)=>{
+  db.project.destroy({
+    where: { id: req.body.id }
+  })
+  .then(deleted => {
+    res.redirect('/')
+  })
+  .catch(err => {
+    console.log('Error in DELETE /:id', err)
   })
 })
 

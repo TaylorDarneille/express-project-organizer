@@ -1,4 +1,8 @@
 <h1>Projects with <%= category.name %></h1>
+<form action="categories/?_method=DELETE" method="POST">
+    <input type="hidden" name="name" value="<%= category.name %>">
+    <input type="submit" value="Delete?">
+</form>
 
 <% if(category && category.projects) { %>
     <% category.projects.forEach(project => { %>

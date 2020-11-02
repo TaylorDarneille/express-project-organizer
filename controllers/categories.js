@@ -29,5 +29,18 @@ router.get('/:id', (req,res) => {
     })
 })
 
+// DELETE /category/:id
+router.delete('/:id', (req,res)=>{
+    db.category.destroy({
+      where: { name: req.body.name }
+    })
+    .then(deleted => {
+      res.redirect('/')
+    })
+    .catch(err => {
+      console.log('Error in DELETE /:id', err)
+    })
+  })
+
 
 module.exports = router
