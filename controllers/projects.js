@@ -1,5 +1,6 @@
 let express = require('express')
 let db = require('../models')
+const { route } = require('./categories')
 let router = express.Router()
 
 // POST /projects - create a new project
@@ -55,6 +56,29 @@ router.get('/:id', (req, res) => {
   .catch((error) => {
     res.status(400).render('main/404')
   })
+})
+
+//PUT /projects/:id - add category to existing project
+//REFERENCE ROUTE STARTING IN LINE 6
+router.post('/:id', (req, res) => {
+  let projectId = parseInt(req.params.id)
+  let submittedName = req.body.category
+  console.log('REQ PARAMS', projectId)
+  console.log('ADD CATEGORY REQUEST',submittedName)
+  
+  db.category.findOrCreate({
+    where: {name: submittedName}
+  })
+  .then(([category, created]) => {
+    //console.log(`The categoy for ${project.name} is ${foundCategory}`)
+    //createdProject.addCategory(category)
+    res.redirect('/')})
+  .catch((error) => {
+    res.status(400).render('main/404')
+    console.log(error)
+  })
+  
+  //res.send('UPDATE CATEGORIES ROUTE WORKING')
 })
 
 module.exports = router
