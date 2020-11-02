@@ -8,7 +8,7 @@ router.post('/', (req, res) => {
     name: req.body.name,
     githubLink: req.body.githubLink,
     deployLink: req.body.deployedLink,
-    description: req.body.description,
+    description: req.body.description
   })
   .then((project) => {
     db.category.findOrCreate({
@@ -16,10 +16,6 @@ router.post('/', (req, res) => {
     })
     .then(([category,created])=>{
       project.addCategory(category)
-      .then(createdRelation =>{
-        console.log('createdRelation', createdRelation)
-        console.log(`${category.name} added to ${project.name}`)
-      })
     })
     .catch(err =>{
       console.log(err)
@@ -27,6 +23,7 @@ router.post('/', (req, res) => {
     res.redirect('/')
   })
   .catch((error) => {
+    console.log('Error in POST /', error)
     res.status(400).render('main/404')
   })
 })
@@ -47,8 +44,55 @@ router.get('/:id', (req, res) => {
     res.render('projects/show', { project: project })
   })
   .catch((error) => {
+    console.log('Error in GET /:id', error)
     res.status(400).render('main/404')
   })
 })
+
+// GET EDIT /projects/:id - edit a project
+router.get('/edit/:id', (req,res) =>{
+  db.project.findOne({
+    include: [db.category],
+    where: {id: req.params.id}
+  })
+  .then((project)=>{
+    if (!project) throw Error()
+    res.render('projects/edit', { project: project })
+  })
+  .catch((error)=>{
+    console.log('Error in GET EDIT /:id', error)
+    res.status(400).render('main/404')
+  })
+})
+
+// EDIT /projects/:id
+router.put('/:id', (req,res)=> {
+  db.project.update({
+    name: req.body.name,
+    githubLink: req.body.githubLink,
+    deployLink: req.body.deployedLink,
+    description: req.body.description
+  },
+  {
+    include: [db.category],
+    where: {id: req.body.id}
+  })
+  //------ This part is having issues -------
+  // .then((project)=>{
+  //   db.category.findOrCreate({
+  //     where: {name: req.body.category}
+  //   })
+  //   .then(([category,created])=>{
+  //     project.addCategory(category)
+  //   })
+  //   .catch(err =>{
+  //     console.log(err)
+  //   })
+  // })
+  .catch(err => {
+    console.log(err)
+  })
+})
+
 
 module.exports = router

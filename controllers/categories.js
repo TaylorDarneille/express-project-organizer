@@ -17,14 +17,14 @@ router.get('/', (req,res) => {
 
 // GET/:idx
 
-router.get('/:idx', (req,res) => {
+router.get('/:id', (req,res) => {
     db.category.findOne ({
         include: [db.project],
-        where: {id: req.params.idx}
+        where: {id: req.params.id}
     }).then(category => {
         res.render('categories/show', { category: category })
     }).catch((error) => {
-        console.log('Error in GET /:idx', error)
+        console.log('Error in GET /:id', error)
         res.status(400).render('main/404')
     })
 })
