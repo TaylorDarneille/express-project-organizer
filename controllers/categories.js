@@ -22,7 +22,21 @@ router.get('/', (req, res) => {
 //Show a specific category and all projects associated with that category
 
 router.get('/:id', (req, res) => {
-    res.send('SHOW SPECIFIC CATEGORY')
+    //grab req.params
+    console.log('REQ.QUERY---->',req.params)
+    db.category.findAll({
+        where: {id: req.params.id},
+        include: [db.project]
+    })
+    .then((category) => {
+        console.log('GET CATEGORY ID BODY ---->', category[0].projects)
+        res.render('categories/show', {category: category})
+    })
+    .catch((error) => {
+        console.log('Error in GET /', error)
+        res.status(400).render('main/404')
+    })
+    
 })
 
 module.exports = router

@@ -1,0 +1,7 @@
+<h1>Projects Associated with <%=category[0].name%></h1>
+
+<!--For each loop to display related categories-->
+<% category[0].projects.forEach(project =>{%>
+    <li><a href="/projects/<%=project.id%>"><%= project.name %></li>
+<%})%>
+</ul>

@@ -1,6 +1,9 @@
 <h1>Categories</h1>
+<h5>Click on a category to see all projects associated with that category</h5>
 
-<!--For each loop-->
+<ul>
+<!--For each loop to get category names-->
 <% categories.forEach(category =>{%>
-    <li><%= category.name %></li>
+    <li><a href="/categories/<%=category.id%>"><%= category.name %></li>
 <%})%>
+</ul>
