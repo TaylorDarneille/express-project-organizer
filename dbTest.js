@@ -25,7 +25,7 @@ db.project.create({
     db.category.findOrCreate({
       where: { name: cat }
     })
-    .spread((category, wasCreated) => {
+    .then(([category, wasCreated]) => {
       project.addCategory(category)
       .then(() => {
         // res.redirect, or whatevs
@@ -36,7 +36,7 @@ db.project.create({
   }, () => {
     console.log('EVERYTHING is done. Now redirect or something')
   })
-
+})
 
 
 
@@ -55,4 +55,4 @@ db.project.create({
   //   })
   // })
   // console.log('redirect or something')
-})
+// })

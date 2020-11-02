@@ -1,0 +1,18 @@
+<h1>Projects with <%= category.name %></h1>
+
+<% if(category && category.projects) { %>
+    <% category.projects.forEach(project => { %>
+        <div>
+            <h3>
+                <a href="/projects/<%= project.id %>">
+                    <%= project.name %>
+                </a>
+            </h3>
+        </div>
+    <% }) %>
+<% } else { %>
+    <h3>No projects yet!</h3>
+<% } %>
+
+<hr />
+<a href="/">&larr; Back Home</a>

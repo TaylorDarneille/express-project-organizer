@@ -8,9 +8,22 @@ router.post('/', (req, res) => {
     name: req.body.name,
     githubLink: req.body.githubLink,
     deployLink: req.body.deployedLink,
-    description: req.body.description
+    description: req.body.description,
   })
   .then((project) => {
+    db.category.findOrCreate({
+      where: {name: req.body.category}
+    })
+    .then(([category,created])=>{
+      project.addCategory(category)
+      .then(createdRelation =>{
+        console.log('createdRelation', createdRelation)
+        console.log(`${category.name} added to ${project.name}`)
+      })
+    })
+    .catch(err =>{
+      console.log(err)
+    })
     res.redirect('/')
   })
   .catch((error) => {
@@ -26,6 +39,7 @@ router.get('/new', (req, res) => {
 // GET /projects/:id - display a specific project
 router.get('/:id', (req, res) => {
   db.project.findOne({
+    include: [db.category],
     where: { id: req.params.id }
   })
   .then((project) => {

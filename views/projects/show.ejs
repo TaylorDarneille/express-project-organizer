@@ -11,7 +11,19 @@
 </a>
 
 <p><%= project.description %></p>
-
+<hr />
+<h4>Project Categories</h4>
+<ul>
+  <% if(project.categories) { %>
+    <% project.categories.forEach(category => { %>
+      <li>
+        <a href="/categories/<%= category.id %>">
+          <%= category.name %>
+        </a>
+      </li>
+    <% }) %>
+  <% } %>
+</ul>
 <hr />
 
 <a href="/">&larr; Back Home</a>
