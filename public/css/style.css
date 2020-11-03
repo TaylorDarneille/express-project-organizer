@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Jockey+One&display=swap');
+
+h1 {
+    color: purple;
+    font-size: 200%;
+}
+
+h2 {
+    color: indigo;
+    font-size: 200%;
+}
+
+a {
+    color: purple;
+}
+
+body {
+    background-color: rgb(200, 255, 200);
+    font-family: 'Jockey One', sans-serif;
+    font-size: 200%;
+}
+
+.navArrow {
+    color: indigo;
+}
+
+.widget {
+    background-color: lightgoldenrodyellow;
+}
+
+.widget__input {
+    display: block;
+}
+
+.widget__input--label {
+    text-align: start;
+}
+
+.widget__input--submit, .btn-primary {
+    background-color: teal;
+    color: lightgoldenrodyellow;
+    border-radius: 25px;
+    width: 150px;
+    height: 30px;
+    text-align: center;
+
+}
+
+.description__summary {
+    padding: 10px;
+}
+
+.description__categories {
+    padding: 5px 10px 5px 10px;
+    font-weight: bold;
+    color: purple
+}
+
+.description__category {
+    padding: 2px;
+}
+
+.index__emptyHeader {
+    color: indigo;
+}
+
+.index__projectContainer {
+    background-color: lightgoldenrodyellow;
+}
+
+.index__projectName {
+    color: purple;
+}
+
+.navbar {
+    background-color: lightgoldenrodyellow;
+}
+
+.nav {
+    color: purple;
+}
+
+.navbar__categoriesDiv {
+    display: inline;
+}

@@ -22,17 +22,12 @@ router.post('/', (req, res) => {
       }
     })
     .then(([category, created]) => {
-      //console.log(`The categoy for ${project.name} is ${foundCategory}`)
       createdProject.addCategory(category)
       res.redirect('/')
-    
     })
   })
-  /*.then((project) => {
-    res.redirect('/')
-  })*/
   .catch((error) => {
-    //res.status(400).render('main/404')
+    res.status(400).render('main/404')
     console.log(error)
   })
 })
@@ -64,15 +59,13 @@ router.get('/:id', (req, res) => {
 router.post('/:id', (req, res) => {
   let projectId = parseInt(req.params.id)
   let submittedName = req.body.category
-  console.log('REQ PARAMS', projectId)
-  console.log('ADD CATEGORY REQUEST',submittedName)
+  //console.log('REQ PARAMS', projectId)
+  //console.log('ADD CATEGORY REQUEST',submittedName)
   
   db.category.findOrCreate({
     where: {name: submittedName}
   })
   .then(([category, created]) => {
-    //console.log(`The categoy for ${project.name} is ${foundCategory}`)
-    //createdProject.addCategory(category)
     db.project.findOne({
       where: {id: projectId}
     })
@@ -80,14 +73,11 @@ router.post('/:id', (req, res) => {
       project.addCategory(category)
       res.redirect(`/projects/${projectId}`)
     })
-    //res.redirect('/')
   })
   .catch((error) => {
     res.status(400).render('main/404')
     console.log(error)
   })
-  
-  //res.send('UPDATE CATEGORIES ROUTE WORKING')
 })
 
 module.exports = router

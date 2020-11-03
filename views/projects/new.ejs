@@ -1,30 +1,32 @@
-<h1>Create a new project</h1>
+<h1>Create a New Project</h1>
 
-<form action="/projects" method="POST">
-  <div class="form-group">
-    <label for="name">Name</label>
-    <input type="text" class="form-control" id="name" name="name" required>
-  </div>
+<section class = "widget">
+  <form class="widget__form" action="/projects" method="POST">
+    <div class="form-group">
+      <label for="name" class="widget__input widget__input--label">Name</label>
+      <input type="text" class="form-control widget__input widget__input--text" id="name" name="name" required>
+    </div>
 
-  <div class="form-group">
-    <label for="githubLink">Github Link</label>
-    <input type="text" class="form-control" id="githubLink" name="githubLink" required>
-  </div>
+    <div class="form-group">
+      <label for="githubLink" class="widget__input widget__input--label">Github Link</label>
+      <input type="text" class="form-control widget__input widget__input--text" id="githubLink" name="githubLink" required>
+    </div>
 
-  <div class="form-group">
-    <label for="deployedLink">Deployed Link</label>
-    <input type="text" class="form-control" id="deployedLink" name="deployedLink" required>
-  </div>
+    <div class="form-group">
+      <label for="deployedLink" class="widget__input widget__input--label">Deployed Link</label>
+      <input type="text" class="form-control widget__input widget__input--text" id="deployedLink" name="deployedLink" required>
+    </div>
 
-  <div class="form-group">
-    <label for="description">Description</label>
-    <textarea type="text" class="form-control" id="description" name="description" required></textarea>
-  </div>
+    <div class="form-group">
+      <label for="description" class="widget__input widget__input--label">Description</label>
+      <textarea type="text" class="widget__input widget__input--text" id="description" name="description" required></textarea>
+    </div>
 
-  <div class="form-group">
-    <label for="category">Category</label>
-    <textarea type="text" class="form-control" id="category" name="category" required></textarea>
-  </div>
+    <div class="form-group">
+      <label for="category" class="widget__input widget__input--label">Category</label>
+      <textarea type="text" class="widget__input widget__input--text" id="category" name="category" required></textarea>
+    </div>
 
-  <input type="submit" class="btn btn-primary">
-</form>
+    <input type="submit" class="widget__input widget__input--submit">
+  </form>
+</section>

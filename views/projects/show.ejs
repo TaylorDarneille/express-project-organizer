@@ -1,33 +1,37 @@
 <h1><%= project.name %></h1>
 
-<a class="btn btn-primary" href="<%= project.githubLink %>" target="_blank">
-  <i class="fa fa-github" aria-hidden="true"></i>
+<section class="description">
+  <a class="btn btn-primary description__button" href="<%= project.githubLink %>" target="_blank">
+    <i class="fa fa-github" aria-hidden="true"></i>
   Github Link
-</a>
+  </a>
 
-<a class="btn btn-primary" href="<%= project.deployLink %>" target="_blank">
-  <i class="fa fa-globe" aria-hidden="true"></i>
+  <a class="btn btn-primary description__button" href="<%= project.deployLink %>" target="_blank">
+    <i class="fa fa-globe" aria-hidden="true"></i>
   Deployed Link
-</a>
+  </a>
 
-<p><%= project.description %></p>
+  <p class="description__summary"><%= project.description %></p>
 
-<p>Categories</p>
-<ul>
-<% project.categories.forEach(category => {%>
-  <li><%=category.name%></li>
-<%})%>
-</ul>
-<hr />
+  <p class="description__categories">Categories</p>
+  <ul>
+  <% project.categories.forEach(category => {%>
+    <li class="description__category"><%=category.name%></li>
+  <%})%>
+  </ul>
+  <hr />
+</section>
 
-<form action="/projects/<%=project.id%>" method="POST">
+<section class = "widget">
+  <form class="widget__form" action="/projects/<%=project.id%>" method="POST">
 
-  <div class="form-group">
-    <label for="category">Add a Category</label>
-    <textarea type="text" class="form-control" id="category" name="category" required></textarea>
-  </div>
+    <div class="form-group">
+      <label for="category" class="widget__input widget__input--label">Add a Category</label>
+      <textarea type="text" class="widget__input widget__input--text" id="category" name="category" required></textarea>
+    </div>
 
-  <input type="submit" class="btn btn-primary" value="Add Category">
-</form>
+    <input type="submit" class="widget__input widget__input--submit" value="Add Category">
+    </form>
+</section>
 
-<a href="/">&larr; Back Home</a>
+<a class="navArrow" href="/">&larr; Back Home</a>
