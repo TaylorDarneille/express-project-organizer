@@ -1,9 +1,8 @@
-<ul>
-  <% data.forEach(category=>{ %>
-    <li>
-      <a href="/categories/<%=category.id%>">
-        <%= category.name %>
-      </a>
-    </li>
-    <% }) %>
-  </ul>
+<h1>View Projects by Category</h1>
+  <% data.forEach(function(category) { %>
+    <div class="well">
+      <h4>
+        <a href="/categories/<%= category.id %>"><%= category.name %></a>
+      </h4>
+    </div>
+  <% }); %>
