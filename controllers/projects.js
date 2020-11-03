@@ -53,8 +53,7 @@ router.get('/:id', (req, res) => {
   })
 })
 
-//PUT /projects/:id - add category to existing project
-//REFERENCE ROUTE STARTING IN LINE 6
+//POST /projects/:id - add category to existing project
 //FIND OR CREATE CATEGORY, THEN FIND PROJECT, THEN ASSOCIATE CATEGORY TO PROJECT
 router.post('/:id', (req, res) => {
   let projectId = parseInt(req.params.id)
@@ -73,6 +72,23 @@ router.post('/:id', (req, res) => {
       project.addCategory(category)
       res.redirect(`/projects/${projectId}`)
     })
+  })
+  .catch((error) => {
+    res.status(400).render('main/404')
+    console.log(error)
+  })
+})
+
+//DELETE /projects/id - Delete project route
+router.delete('/:id', (req, res) => {
+  let projectId=req.params.id
+  console.log(req.params)
+  db.project.destroy({
+    where: {id: projectId}
+  })
+  .then(deletedProject => {
+    res.redirect('/')
+    console.log('ROW DELETED')
   })
   .catch((error) => {
     res.status(400).render('main/404')
