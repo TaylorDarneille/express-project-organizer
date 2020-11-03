@@ -20,6 +20,10 @@ body {
     font-size: 200%;
 }
 
+input {
+    margin: 10px 0px 10px 0px;
+}
+
 .navArrow {
     color: indigo;
 }
@@ -36,14 +40,13 @@ body {
     text-align: start;
 }
 
-.widget__input--submit, .btn-primary {
+.widget__input--submit, .btn-primary, input {
     background-color: teal;
     color: lightgoldenrodyellow;
     border-radius: 25px;
     width: 150px;
     height: 30px;
     text-align: center;
-
 }
 
 .description__summary {
