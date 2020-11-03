@@ -1,16 +1,32 @@
-<h1>Project Organizer</h1>
-
-<h2>My Projects</h2>
+<div class="heading">
+  <h1 class="title">Project Organizer</h1>
+  <h2>My Projects</h2>
+</div>  
 <hr>
 
 <% if (projects.length < 1) { %>
   <h4>Better get coding, I've no projects!</h4>
 <% } %>
 
+<div class="row posts">
 <% projects.forEach(function(project) { %>
-  <div class="well">
-    <h2>
+  <div class="project">
+    <h2 class="project-title">
       <a href="/projects/<%= project.id %>"><%= project.name %></a>
     </h2>
+    <form action="/projects" method="POST">
+        <input type="hidden" class="form-control" id="name" name="name" value = <%=project.name %>>
+        <input type="hidden" class="form-control" id="githubLink" name="githubLink" value = <%=project.githubLink %>>
+        <input type="hidden" class="form-control" id="deployedLink" name="deployedLink" value = <%=project.deployLink %>>
+        <input type="hidden" class="form-control" id="description" name="description" value = <%=project.description %>>
+
+        <div class="form-group">
+          <label for="category" id="new-category">Add a Category</label>
+          <input type="text" class="form-control home-category" id="category" name="category" required>
+        </div>
+    
+      <input type="submit" class="btn btn-primary">
+    </form>
   </div>
 <% }); %>
+</div>

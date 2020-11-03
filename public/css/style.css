@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway&display=swap');
+
+
+body{
+    background: black;
+}
+
+.heading{
+    height: 250px;
+    background: lightblue;
+    margin-top: 0px;
+    color: white;
+    text-align: center;
+    padding-top: 65px;
+    font-family: 'Playfair Display', serif;
+    font-size: 50px;
+    border-radius: 5px;
+}
+
+.project-title{
+    font-family: 'Playfair Display', serif;
+    color: rgb(71, 122, 178);
+    margin-top: 20px;
+}
+  
+.project{
+    text-align: center;
+    height: 250px;
+    border-radius: 5px;
+    border: 5px solid lightblue;
+    background: rgb(245, 245, 245);
+    margin: 10px;
+    float: left;
+    width: 30%;
+}
+
+.posts{
+    width: 100%;
+    margin: 0 auto;
+    margin-left: 10px;
+    text-align: center;
+}
+
+.home-category{
+    border-radius: 30px;
+    font-family: 'Raleway', sans-serif;
+    width: 250px;
+    margin: 0 auto;
+}
+
+.btn{
+    border-radius: 30px;
+    font-family: 'Raleway', sans-serif;
+    width: 150px;
+}
+
+#new-category{
+    margin-top: 30px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+}
+
+.title{
+    color: rgb(71, 122, 178);
+    font-weight: 700;
+    font-size: 50px;
+}
+
+.project-desc{
+    height: 80px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    color: white;
+    width: 80%;
+    margin: 10% auto;
+}
+
+#about{
+    font-family: 'Raleway', sans-serif;
+    color: grey;
+    font-size: 15px;
+    margin-bottom: 0px;
+}
+
+.new-post{
+    margin-top: 30px;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+}
+
+.categories{
+    margin-top: 20px;
+    font-size: 15px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 700;
+}

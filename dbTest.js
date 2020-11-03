@@ -3,9 +3,22 @@ var async = require('async')
 // Create a category: Category model must exist and be migrated
 
 // db.category.create({
-//   name: 'node'
+//   name: 'CSS & HTML'
 // }).then(function(category) {
 //   console.log(category.get())
+// })
+
+// db.project.findOne({
+//   where: { id: 1 },
+//   include: [db.category]
+// }).then(function(project) {
+//   // by using eager loading, the project model should have a categories key
+//   console.log(project.categories)
+
+//   // addCategory function should be available to this model
+//   project.addCategory({ name: 'node' }).then(function(category) {
+//     console.log(category.id)
+//   })
 // })
 
 // Create a project and use the helper function create<ModelName> to create a category
@@ -25,7 +38,7 @@ db.project.create({
     db.category.findOrCreate({
       where: { name: cat }
     })
-    .spread((category, wasCreated) => {
+    .then(([category, wasCreated]) => {
       project.addCategory(category)
       .then(() => {
         // res.redirect, or whatevs

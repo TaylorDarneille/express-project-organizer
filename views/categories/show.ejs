@@ -1,0 +1,14 @@
+<div class="heading">
+  <h1> <%=category.name%></h1>
+  <p id="about">All of the below projects have <%=category.name%> as one of its categories!</p>
+</div>
+
+<div class="categories">
+  <% projects.forEach(project => { %>
+      <div class="well">
+        <h2>
+          <a href="/projects/<%= project.id %>"><%= project.name %></a>
+        </h2>
+    </div>  
+    <% }); %>
+</div>
