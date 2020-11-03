@@ -8,11 +8,14 @@ router.post('/', (req, res) => {
     name: req.body.name,
     githubLink: req.body.githubLink,
     deployLink: req.body.deployedLink,
-    description: req.body.description
+    description: req.body.description,
   })
   .then((project) => {
-    res.redirect('/')
-  })
+    db.category.findOrCreate({
+      where: { name: req.body.category}
+    })
+      res.redirect('/')
+      })
   .catch((error) => {
     res.status(400).render('main/404')
   })
@@ -22,6 +25,11 @@ router.post('/', (req, res) => {
 router.get('/new', (req, res) => {
   res.render('projects/new')
 })
+// //categories route 
+// router.get('/new', (req, res) => {
+//   res.render('projects/categories')
+// })
+
 
 // GET /projects/:id - display a specific project
 router.get('/:id', (req, res) => {
@@ -36,5 +44,16 @@ router.get('/:id', (req, res) => {
     res.status(400).render('main/404')
   })
 })
-
+// router.get('/:id', (req, res) => {
+//   db.category.findOne({
+//     where: { id: req.params.id }
+//   })
+//   .then((category) => {
+//     if (!category) throw Error()
+//     res.render('categories/show', { category: category })
+//   })
+//   .catch((error) => {
+//     res.status(400).render('main/404')
+//   })
+// })
 module.exports = router
