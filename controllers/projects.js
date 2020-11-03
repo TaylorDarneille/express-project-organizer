@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
             name: string.toLowerCase() //to avoid any capitalization issues
           }
         });
-        await newProject.addCategory(arr[0])
+        await newProject.addCategory(arr[0]) // the new model is the first item in the returned array
       });
       res.redirect('/')
     })
@@ -81,8 +81,19 @@ router.put('/:id', (req, res) => {
     })
     .then(async numUpdates => {
       let myProj = await db.project.findByPk(req.params.id)
-      res.send(myProj)
-      //res.redirect(`/projects/${req.params.id}`)
+      // clear out categories
+      await myProj.setCategories([])
+      // split the comma separate string into an array of strings
+      const categoriesArrayOfString = req.body.category.split(', ');
+      categoriesArrayOfString.forEach(async string => {
+        const arr = await db.category.findOrCreate({
+          where: {
+            name: string.toLowerCase() //to avoid any capitalization issues
+          }
+        });
+        await myProj.addCategory(arr[0]) // the new model is the first item in the returned array
+      });
+      res.redirect(`/projects/${req.params.id}`)
     })
 })
 
