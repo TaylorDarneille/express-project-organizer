@@ -1,0 +1,9 @@
+<% data.forEach(category => { %>
+<ul>
+    <li>
+        <a href="/projects/categories/<%= category.id %>"
+            ><%=category.name %>
+        </a>
+    </li>
+</ul>
+<% }) %>
