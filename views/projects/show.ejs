@@ -2,7 +2,7 @@
 <h5><a href="/projects/edit/<%= project.id %>">Edit</a></h5>
 <form action="projects/?_method=DELETE" method="POST">
   <input type="hidden" name="id" value="<%= project.id %>">
-  <input type="submit" value="Delete?">
+  <input type="submit" class="btn btn-primary" value="Delete?">
 </form>
 
 <a class="btn btn-primary" href="<%= project.githubLink %>" target="_blank">

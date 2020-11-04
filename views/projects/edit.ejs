@@ -25,13 +25,13 @@
   <div class="form-group">
     <label for="category">Category</label>
     <input type="text" class="form-control" id="category" name="category" value="
-        <% if(project.categories) { %>
-          <% const nameArr = [] %>
-            <% project.categories.forEach(category => { %>
-              <% nameArr.push(category.name) %>
-            <% }) %>
-          <%= nameArr.toString() %>
-        <% } %>
+      <% if(project.categories) { %>
+        <% const nameArr = [] %>
+          <% project.categories.forEach(category => { %>
+            <% nameArr.push(category.name) %>
+          <% }) %>
+        <%= nameArr.toString() %>
+      <% } %>
     " required>
   </div>
 
