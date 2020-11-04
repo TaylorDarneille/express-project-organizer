@@ -1,4 +1,6 @@
-<h4><%= category.name %></h4>
-<% category.projects.forEach(project=>{%>
-    <p><%= project.name %></p>
-<%})%>
+<h1>Category: <%= category.name %></h1>
+<div class="well">
+    <% category.projects.forEach(project=>{%>
+        <a href="/projects/<%= project.id %>"><%= project.name %></a>
+    <%})%>
+</div>

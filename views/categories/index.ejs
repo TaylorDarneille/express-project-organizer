@@ -1,4 +1,6 @@
 <h1>Here are the categories:</h1>
 <% categories.forEach(category=>{%>
-   <h4><a href="/categories/<%=category.id%>"><%=category.name%></a></h4>
+    <div class="well">
+        <h4><a href="/categories/<%=category.id%>"><%=category.name%></a></h4>
+    </div>
 <%})%>
