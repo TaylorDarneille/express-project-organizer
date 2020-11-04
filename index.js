@@ -29,7 +29,7 @@ app.get('*', (req, res) => {
 
 
 
-let server = app.listen(process.env.PORT || 8888, function() {
+let server = app.listen(process.env.PORT || 8080, function() {
   console.log(`you're listening to the smooth sounds of port ${process.env.PORT}`)
 })
 
