@@ -9,6 +9,7 @@ app.use(methodOverride('_method'))
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(ejsLayouts)
+app.use(express.static(__dirname + '/public/'))
 
 app.get('/', (req, res) => {
   db.project.findAll()
@@ -27,6 +28,8 @@ app.use('/categories', require('./controllers/categories'))
 app.get('*', (req, res) => {
   res.render('main/404')
 })
+
+
 
 let server = app.listen(process.env.PORT || 3000, function() {
   console.log(`you're listening to the smooth sounds of port ${process.env.PORT}`)

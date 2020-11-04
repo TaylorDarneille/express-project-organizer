@@ -4,35 +4,29 @@
 <input type="hidden" name="id" value="<%=project.id%>">
 <fieldset>
   <legend>Edit Project</legend>
-  <div class="row">
-    <div class="col-sm-12">
+  <div class="input-group vertical">
       <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" name="name" value="<%=project.name%>" required>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12 col-md-6">
-      <label for="githubLink">Github Link</label>
-      <input type="text" class="form-control" id="githubLink" name="githubLink" value="<%=project.githubLink%>" required>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12 col-md-6">
-  <label for="deployedLink">Deployed Link</label>
-  <input type="text" class="form-control" id="deployedLink" name="deployedLink" value="<%=project.deployedLink%>" required>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-12 col-md-6">
-  <label for="description">Description</label>
-  <textarea type="text" class="form-control" id="description" name="description" required><%=project.description%></textarea>
-    </div>
+      <input type="text"  id="name" name="name" value="<%=project.name%>" required>
   </div>
 
-  <div class="row">
-    <div class="col-sm-12 col-md-6">
+  <div class="input-group vertical">
+      <label for="githubLink">Github Link</label>
+      <input type="text" id="githubLink" name="githubLink" value="<%=project.githubLink%>" required>
+  </div>
+
+  <div class="input-group vertical">
+    <label for="deployedLink">Deployed Link</label>
+    <input type="text" id="deployedLink" name="deployedLink" value="<%=project.deployedLink%>" required>
+  </div>
+
+  <div class="input-group vertical">
+    <label for="description">Description</label>
+    <textarea type="text" id="description" name="description" required><%=project.description%></textarea>
+  </div>
+
+  <div class="input-group vertical">
       <label for="category">Category</label>
-      <input type="text" class="form-control" id="category" name="category" value="
+      <input type="text" id="category" name="category" value="
         <% if(project.categories) { %>
           <% const nameArr = [] %>
             <% project.categories.forEach(category => { %>
@@ -41,7 +35,6 @@
           <%= nameArr.toString() %>
         <% } %>
       " required>
-    </div>
   </div>
 
   <input type="submit" class="button primary">
