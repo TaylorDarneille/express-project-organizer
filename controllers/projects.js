@@ -9,13 +9,13 @@ router.post('/', (req, res) => {
     githubLink: req.body.githubLink,
     deployLink: req.body.deployedLink,
     description: req.body.description,
-    }).then(function(project) {
-        db.category.findOrCreate({
+  }).then(function(project) {
+       db.category.findOrCreate({
           where: { name: req.body.categoryLink }
         })
         .then(([category, wasCreated]) => {
-          project.addCategory(category)
-          .then(() => {
+            project.addCategory(category)
+           .then(() => {
             // res.redirect, or whatevs
             console.log('done adding', category)
             res.redirect('/')
@@ -23,12 +23,9 @@ router.post('/', (req, res) => {
         })
       }, () => {
         console.log('EVERYTHING is done. Now redirect or something')
-      })
     })
+   })
   
-
-
-
 
   
 // GET /projects/new - display form for creating a new project
@@ -52,19 +49,36 @@ router.get('/:id', (req, res) => {
 })
 
 
-
+//DELETES A PROJECT
 router.post('/:id', (req, res)=>{  //thought it was router.delete but that didnt work. somehow post worked.
   db.project.destroy({
     where: {id: req.params.id}
   })
     .then(numRowsDeleted=>{
        console.log(numRowsDeleted)
-      res.redirect('/')  
+        res.redirect('/')  
   }).catch(err=>{
     res.send(err)
   })
 })
 
+
+
+router.put('/:id', (req, res)=>{
+  db.project.update({
+    name: req.body.name
+  },
+{
+  where:{
+    id: req.params.id
+  }
+}).then(numRowsChanged=>{
+    console.log(numRowsChanged)
+    res.redirect('/')  
+}).catch(err=>{
+  res.send(err)
+})
+})
 
 
 

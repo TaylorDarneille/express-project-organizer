@@ -6,7 +6,6 @@ body {  /* INFO ABOUT THE BODY & BACKGROUND IMG */
     background-size: 100% 100%;
     display:flex;
     flex-direction:column;
-    justify-content: space-between;
     align-items: center;
     width:100vw;
   } 
@@ -25,14 +24,20 @@ body {  /* INFO ABOUT THE BODY & BACKGROUND IMG */
     text-align:center;
     height:100px;
     align-items: center;
-
+    margin-bottom: 10;
+    justify-content: center;
+    justify-content: space-around;
   }
 
+  #container{
+    background-color:red;
+  }
 
   .well:hover{
     background-color: #cab921; 
     color:white;
     transform: skew(-10deg);;
+    
   }
 
  #ProjectHeader{
@@ -115,4 +120,31 @@ a {
 
 #categoryLink{
   background-color: rgba(252, 250, 252, 0.608);
+}
+
+#buttons{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+#edit{
+  color:red;
+  margin-left:170px;
+  float: right;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+P{
+  background-color:white;
+  font-size:20px;
+  margin-right: 90px;
+}
+
+#projectName{
+  background-color:white;
+  margin-right: 550px;
 }
