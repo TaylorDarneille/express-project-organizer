@@ -6,6 +6,7 @@ body{
     background-color: rgb(253, 255, 232);
 }
 
-.well{
+.well:hover{
     background-color: rgb(240, 244, 255);
+    background-color: rgb(174, 225, 237);
 }
