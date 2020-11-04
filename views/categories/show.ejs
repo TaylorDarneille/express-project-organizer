@@ -1,0 +1,7 @@
+<h1>Projects with Category <%= foundCat[0].dataValues.name %></h1>
+
+  <% let array = foundCat[0].dataValues.projects %>
+
+  <% array.forEach(element=>{ %>
+      <li><%=element.dataValues.name%></li>
+ <% }) %>

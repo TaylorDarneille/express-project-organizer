@@ -21,9 +21,43 @@ app.get('/', (req, res) => {
 
 app.use('/projects', require('./controllers/projects'))
 
+
+
+app.get('/categories', (req,res) => {
+  db.category.findAll()
+  .then(foundCats => {
+    console.log(foundCats)
+    res.render('/Users/taylorschmidt/Desktop/SEIFX818/unit_two/express-project-organizer/views/categories/index.ejs', {foundCats: foundCats})
+  })
+  .catch(err => {
+    console.log(err)
+  })
+})
+
+app.get('/categories/:idx', (req,res)=> {
+  db.category.findAll({
+    include: [db.project],
+    where: {id: req.params.idx}
+  }).then((foundCat) =>{
+    res.render('/Users/taylorschmidt/Desktop/SEIFX818/unit_two/express-project-organizer/views/categories/show.ejs',  {foundCat: foundCat})
+  })
+})
+
+
+
+
+
 app.get('*', (req, res) => {
   res.render('main/404')
 })
+
+
+
+
+
+
+
+
 
 let server = app.listen(process.env.PORT || 3000, function() {
   console.log(`you're listening to the smooth sounds of port ${process.env.PORT}`)
