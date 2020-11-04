@@ -1,6 +1,4 @@
-<h1>Project Organizer</h1>
-
-<h2>My Projects</h2>
+<h1>My Projects</h1>
 <hr>
 
 <% if (projects.length < 1) { %>
@@ -8,9 +6,11 @@
 <% } %>
 
 <% projects.forEach(function(project) { %>
-  <div class="well">
-    <h2>
-      <a href="/projects/<%= project.id %>"><%= project.name %></a>
-    </h2>
+  <div class="row">
+    <div class="card">
+      <h2>
+        <a href="/projects/<%= project.id %>"><%= project.name %></a>
+      </h2>
+    </div>
   </div>
 <% }); %>

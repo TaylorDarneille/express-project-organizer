@@ -1,22 +1,26 @@
 <h1>Projects with <%= category.name %></h1>
-<form action="categories/?_method=DELETE" method="POST">
-    <input type="hidden" name="name" value="<%= category.name %>">
-    <input type="submit" value="Delete?">
-</form>
-
-<% if(category && category.projects) { %>
-    <% category.projects.forEach(project => { %>
-        <div>
-            <h3>
-                <a href="/projects/<%= project.id %>">
-                    <%= project.name %>
-                </a>
-            </h3>
-        </div>
-    <% }) %>
-<% } else { %>
-    <h3>No projects yet!</h3>
-<% } %>
-
+<div class="container">
+<div class="row">
+    <form action="categories/?_method=DELETE" method="POST">
+        <input type="hidden" name="name" value="<%= category.name %>">
+        <input type="submit" value="Delete?">
+    </form>
+</div>
+    
+    <% if(category && category.projects) { %>
+        <% category.projects.forEach(project => { %>
+            <div class="card">
+                <h3>
+                    <a href="/projects/<%= project.id %>">
+                        <%= project.name %>
+                    </a>
+                </h3>
+            </div>
+            <% }) %>
+            <% } else { %>
+                <h3>No projects yet!</h3>
+                <% } %>
+                
+</div>
 <hr />
 <a href="/">&larr; Back Home</a>

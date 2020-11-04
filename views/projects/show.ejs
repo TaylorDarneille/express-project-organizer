@@ -1,34 +1,44 @@
 <h1><%= project.name %></h1>
-<h5><a href="/projects/edit/<%= project.id %>">Edit</a></h5>
-<form action="projects/?_method=DELETE" method="POST">
-  <input type="hidden" name="id" value="<%= project.id %>">
-  <input type="submit" class="btn btn-primary" value="Delete?">
-</form>
-
-<a class="btn btn-primary" href="<%= project.githubLink %>" target="_blank">
-  <i class="fa fa-github" aria-hidden="true"></i>
-  Github Link
-</a>
-
-<a class="btn btn-primary" href="<%= project.deployLink %>" target="_blank">
-  <i class="fa fa-globe" aria-hidden="true"></i>
-  Deployed Link
-</a>
-
-<p><%= project.description %></p>
-<hr />
-<h4>Project Categories</h4>
-<ul>
-  <% if(project.categories) { %>
-    <% project.categories.forEach(category => { %>
-      <li>
-        <a href="/categories/<%= category.id %>">
-          <%= category.name %>
-        </a>
-      </li>
-    <% }) %>
-  <% } %>
-</ul>
-<hr />
-
+<div class="container">
+  <div class="row">
+    <form action="#">
+      <a class="button" href="/projects/edit/<%= project.id %>">Edit</a>
+    </form>
+    <form action="projects/?_method=DELETE" method="POST">
+      <input type="hidden" name="id" value="<%= project.id %>">
+      <input type="submit" class="button" value="Delete?">
+    </form>
+  </div>
+  <div class="row">
+    <a class="button primary" href="<%= project.githubLink %>" target="_blank">
+      <i class="fa fa-github" aria-hidden="true"></i>
+      Github Link
+    </a>
+    
+    <a class="button primary" href="<%= project.deployLink %>" target="_blank">
+      <i class="fa fa-globe" aria-hidden="true"></i>
+      Deployed Link
+    </a>
+  </div>
+  <div class="row">
+    <p><%= project.description %></p>
+  </div>
+  <hr />
+  <div class="row">
+    <h4>Project Categories</h4>
+  </div>
+    <% if(project.categories) { %>
+      <% project.categories.forEach(category => { %>
+        <div class="row">
+          <h5>
+            <a href="/categories/<%= category.id %>">
+              <%= category.name %>
+            </a>
+          </h5>
+        </div>
+        <% }) %>
+        <% } %>
+</div>
+      <hr />
+      
 <a href="/">&larr; Back Home</a>
