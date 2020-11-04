@@ -1,27 +1,44 @@
 let express = require('express')
 let db = require('../models')
 let router = express.Router()
+let async = require('async')
 
 // POST /projects - create a new project
-router.post('/', (req, res) => {
-  db.project.create({
+router.post('/', async(req, res) => {
+  const catList = await req.body.category
+  const catArray = catList.split(',')
+  const createdProject = await db.project.create({
     name: req.body.name,
     githubLink: req.body.githubLink,
     deployLink: req.body.deployedLink,
-    description: req.body.description
+    description: req.body.description,
   })
-  .then((project) => {
+  async.each(catArray, (category)=>{
+    // console.log(category)
     db.category.findOrCreate({
-      where: {name: req.body.category}
+      where: {name: category}
     })
-    .then(([category,created])=>{
-      project.addCategory(category)
+    .then(([createdCategory, created])=>{
+      createdProject.addCategory(createdCategory)
     })
-    .catch(err =>{
+    .catch(err => {
       console.log(err)
     })
-    res.redirect('/')
   })
+
+
+  // .then((project) => {
+  //   db.category.findOrCreate({
+  //     where: {name: req.body.category}
+  //   })
+  //   .then(([category,created])=>{
+  //     project.addCategory(category)
+  //   })
+  //   .catch(err =>{
+  //     console.log(err)
+  //   })
+    res.redirect('/')
+  // })
   .catch((error) => {
     console.log('Error in POST /', error)
     res.status(400).render('main/404')
