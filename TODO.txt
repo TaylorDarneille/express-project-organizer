@@ -1,4 +1,1 @@
-why is edit form redirecting with no error but info is not being edited
-why are full values not showing in edit form
-
-stuck trying to get edit route to work
+right now edit form doesn't do anything to categories, but it does display properly in field

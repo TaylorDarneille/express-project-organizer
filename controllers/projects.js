@@ -54,23 +54,28 @@ router.get('/edit/:id', (req, res) => {
     where: {id: req.params.id}
   })
   .then(project => {
-    res.render('projects/edit', {project: project})
+    project.getCategories().then(categories => {
+      console.log(categories)
+      res.render('projects/edit', {project: project, categories: categories})
+    })
   })
 })
 
 router.put('/:id', (req, res) => {
-  db.project.findOne({
+  db.project.update({
+    name: req.body.name,
+    githubLink: req.body.githubLink,
+    deployLink: req.body.deployLink,
+    description: req.body.description
+  },
+  {
     where: {id: req.params.id}
+  }).then(rowsChanged => {
+    console.log(rowsChanged)
+    res.redirect('/')
   })
-  .then(project => {
-    project.update({
-      name: req.body.name,
-      githubLink: req.body.githubLink,
-      deployLink: req.body.deployedLink,
-      description: req.body.description
-    }).then(updated => {
-      res.redirect('/')
-    })
+  .catch(err => {
+    console.log(err)
   })
 })
 
