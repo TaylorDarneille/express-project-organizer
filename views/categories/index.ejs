@@ -3,9 +3,19 @@
 
 <ul>
 <!--For each loop to get category names-->
+<% let categoryNames = []%>
 <% categories.forEach(category =>{%>
-    <li><a href="/categories/<%=category.id%>"><%= category.name %></li>
+    <%categoryNames.push(category.name) %>
+    <%categoryNames.sort()%>
+    <!--<li><a href="/categories/<%=category.id%>"><%= category.name%></li>-->
 <%})%>
+
+
+<% categoryNames.forEach(categoryName => {%>
+    <li><a href="/categories/<%=categoryName%>"><%=categoryName%></li>
+<%})%>
+
+
 </ul>
 
 <a class="navArrow" href="/">&larr; Back Home</a>

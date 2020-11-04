@@ -8,14 +8,13 @@ let router = express.Router()
 router.get('/', (req, res) => {
     db.category.findAll()
     .then((categories) => {
-        console.log(categories)
+        console.log('CHECK HERE---->',categories)
         res.render('categories/index', { categories: categories })
     })
     .catch((error) => {
     console.log('Error in GET /', error)
     res.status(400).render('main/404')
     })
-    //res.send('LIST OF CATEGORIES')
 })
 
 // GET /categories/:id
@@ -25,7 +24,7 @@ router.get('/:id', (req, res) => {
     //grab req.params
     console.log('REQ.QUERY---->',req.params)
     db.category.findAll({
-        where: {id: req.params.id},
+        where: {name: req.params.id},
         include: [db.project]
     })
     .then((category) => {

@@ -3,7 +3,7 @@ let express = require('express')
 let ejsLayouts = require('express-ejs-layouts')
 let db = require('./models')
 let app = express()
-//Require method override to leverage update/delete methods 
+//Install and require method override to leverage update/delete methods 
 const methodOverride = require('method-override')
 
 app.set('view engine', 'ejs')

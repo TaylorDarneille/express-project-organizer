@@ -1,4 +1,5 @@
 <h1>Projects Associated with <%=category[0].name%></h1>
+<h4>Click on a project to learn more</h4>
 
 <ul>
 <!--For each loop to display related categories-->
@@ -6,3 +7,5 @@
     <li><a href="/projects/<%=project.id%>"><%= project.name %></li>
 <%})%>
 </ul>
+
+<a class="navArrow" href="/categories">&larr; Back To Categories</a>
