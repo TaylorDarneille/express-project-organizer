@@ -83,8 +83,10 @@ router.get('/edit/:id', (req,res) =>{
 })
 
 // EDIT /projects/:id
-router.put('/:id', (req,res)=> {
-  db.project.update({
+router.put('/:id', async(req,res)=> {
+  const catList = await req.body.category
+  const catArray = catList.split(',')
+  const updatedProject = await db.project.update({
     name: req.body.name,
     githubLink: req.body.githubLink,
     deployLink: req.body.deployedLink,
@@ -94,22 +96,26 @@ router.put('/:id', (req,res)=> {
     include: [db.category],
     where: {id: req.body.id}
   })
-  //------ This part is having issues -------
-  .then((project)=>{
+  const foundProject = await db.project.findOne({
+    where: {id: req.body.id},
+    include: [db.category]
+  })
+  async.each(catArray, (category)=>{
     db.category.findOrCreate({
-      where: {name: req.body.category}
+      where: {name: category}
     })
-    .then(([category,created])=>{
-      project.addCategory(category)
+    .then(([createdCategory, created])=>{
+      // console.log(foundProject)
+      foundProject.addCategory(createdCategory)
     })
-    .catch(err =>{
+    .catch(err => {
       console.log(err)
     })
-  })
+  })  
   .catch(err => {
     console.log(err)
   })
-  res.redirect(`/projects/${req.body.id}`)
+  res.redirect('/')
 })
 
 // DELETE /project/:id
