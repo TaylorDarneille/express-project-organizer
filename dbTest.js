@@ -11,6 +11,7 @@ var async = require('async')
 // Create a project and use the helper function create<ModelName> to create a category
 // Requires categoriesProjects to exist, be migrated, and properly associated
 
+//2
 var cats = ['node', 'javascript', 'react', 'css', 'html']
 
 db.project.create({
@@ -25,10 +26,11 @@ db.project.create({
     db.category.findOrCreate({
       where: { name: cat }
     })
-    .spread((category, wasCreated) => {
+    .then(([category, wasCreated]) => {
       project.addCategory(category)
       .then(() => {
-        // res.redirect, or whatevs
+        project.addCategory(category)
+        //res.redirect, or whatevs
         console.log('done adding', cat)
         done()
       })
@@ -36,7 +38,8 @@ db.project.create({
   }, () => {
     console.log('EVERYTHING is done. Now redirect or something')
   })
-
+})
+//2
 
 
 
@@ -55,4 +58,4 @@ db.project.create({
   //   })
   // })
   // console.log('redirect or something')
-})
+// })

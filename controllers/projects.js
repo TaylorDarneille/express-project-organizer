@@ -1,5 +1,6 @@
 let express = require('express')
 let db = require('../models')
+const category = require('../models/category')
 let router = express.Router()
 
 // POST /projects - create a new project
@@ -8,7 +9,8 @@ router.post('/', (req, res) => {
     name: req.body.name,
     githubLink: req.body.githubLink,
     deployLink: req.body.deployedLink,
-    description: req.body.description
+    description: req.body.description,
+    category: req.body.category
   })
   .then((project) => {
     res.redirect('/')
@@ -36,5 +38,6 @@ router.get('/:id', (req, res) => {
     res.status(400).render('main/404')
   })
 })
+
 
 module.exports = router

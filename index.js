@@ -7,6 +7,7 @@ let app = express()
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(ejsLayouts)
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
   db.project.findAll()
@@ -19,7 +20,20 @@ app.get('/', (req, res) => {
   })
 })
 
+app.get('/', (req, res) => {
+  db.category.findAll()
+  .then((category) => {
+    res.render('main/index', { category: category })
+  })
+  .catch((error) => {
+    console.log('Error in GET /', error)
+    res.status(400).render('main/404')
+  })
+})
+
+
 app.use('/projects', require('./controllers/projects'))
+app.use('/categories', require('./controllers/category'))
 
 app.get('*', (req, res) => {
   res.render('main/404')
