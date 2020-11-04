@@ -1,4 +1,9 @@
 
-<%foundCategories.forEach(category =>{ %>
-    <p><%=category.name%></p>
-    <%})%>
+<% foundCategories.forEach(category => { %>
+    <div class="well">
+      <h2>
+        <a href="/categories/<%= category.id %>"><%= category.name %></a>
+      </h2>
+    </div>
+  <% }); %>
+

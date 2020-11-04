@@ -25,6 +25,7 @@ app.use('/projects', require('./controllers/projects'))
 
 // app.get('/categories', require('./controllers/categories'))
 app.get("/categories", (req,res)=> {
+  
   db.category.findAll()
   .then((foundCategories) =>{
     console.log(foundCategories)
@@ -33,14 +34,34 @@ app.get("/categories", (req,res)=> {
 })
 
 app.get("/categories/:idx", (req,res)=> {
+  console.log(req.params)
   db.category.findOne({
     where: {
       id: req.params.idx
-    }
-  }).then(foundId=>{
-    console.log(foundId)
+    },
+    include: [db.project]
+  })
+  .then((categories)=>{
+    console.log("I am in here now")
+    if (!categories) throw Error()
+    console.log("categories", categories)
+    // db.project.findAll({
+    //   where: {
+    //     id: req.params.idx
+    //   },
+    //   include: [db.project, db.category]
+    // })
+    // .then((project)=> {
+    //   res.render('categories/show', { categories: categories, project: project})
+    // })
+    res.render('categories/show', { categories: categories})
+  })
+  .catch((error) => {
+    console.log(error)
+    // res.status(400).render('main/404')
   })
 })
+
 
 app.get('*', (req, res) => {
   res.render('main/404')
