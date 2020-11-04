@@ -1,0 +1,16 @@
+body {
+    background-image: url("https://www.desktopbackground.org/download/1920x1080/2013/01/24/519574_project-random-binary-wallpapers-generator-cons-coding_1920x1088_h.png");
+    background-repeat: no-repeat;
+    background-color:black;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: center;
+    width:100vw;
+   }
+   .form-group{
+    background-color: gray;
+
+   }
