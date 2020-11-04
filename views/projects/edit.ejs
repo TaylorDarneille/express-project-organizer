@@ -26,9 +26,11 @@
     <label for="category">Category</label>
     <input type="text" class="form-control" id="category" name="category" value="
         <% if(project.categories) { %>
+          <% const nameArr = [] %>
             <% project.categories.forEach(category => { %>
-                <%= category.name %>
+              <% nameArr.push(category.name) %>
             <% }) %>
+          <%= nameArr.toString() %>
         <% } %>
     " required>
   </div>
