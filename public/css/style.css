@@ -23,6 +23,9 @@ body {  /* INFO ABOUT THE BODY & BACKGROUND IMG */
     margin-left:100px;
     margin-right:100px;
     text-align:center;
+    height:100px;
+    align-items: center;
+
   }
 
 
@@ -58,7 +61,12 @@ body {  /* INFO ABOUT THE BODY & BACKGROUND IMG */
 
 a {
   color:white;
+  font-size:27px;
+  align-self: center;
+  text-align: center;
 }
+
+
 
 
 #CatHeader{

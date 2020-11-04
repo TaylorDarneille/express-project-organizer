@@ -51,4 +51,21 @@ router.get('/:id', (req, res) => {
   })
 })
 
+
+
+router.post('/:id', (req, res)=>{  //thought it was router.delete but that didnt work. somehow post worked.
+  db.project.destroy({
+    where: {id: req.params.id}
+  })
+    .then(numRowsDeleted=>{
+       console.log(numRowsDeleted)
+      res.redirect('/')  
+  }).catch(err=>{
+    res.send(err)
+  })
+})
+
+
+
+
 module.exports = router

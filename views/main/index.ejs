@@ -9,8 +9,15 @@
 
 <% projects.forEach(function(project) { %>
   <div class="well">
-    <h2>
+    <h2 id="text">
       <a href="/projects/<%= project.id %>"><%= project.name %></a>
     </h2>
+  
+    <form method="POST" action="/projects/<%=project.id%>/?_method=DELETE">
+      <input id="delete" type="submit" value="Delete">
+    </form>
+
   </div>
+
+
 <% }); %>
