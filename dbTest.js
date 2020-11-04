@@ -25,7 +25,7 @@ db.project.create({
     db.category.findOrCreate({
       where: { name: cat }
     })
-    .spread((category, wasCreated) => {
+    .then(([category, wasCreated]) => {
       project.addCategory(category)
       .then(() => {
         // res.redirect, or whatevs
@@ -36,7 +36,7 @@ db.project.create({
   }, () => {
     console.log('EVERYTHING is done. Now redirect or something')
   })
-
+})
 
 
 
@@ -55,4 +55,25 @@ db.project.create({
   //   })
   // })
   // console.log('redirect or something')
-})
+
+// db.pet.findOrCreate({
+//     where:{
+//         name:'Simone',
+//         species: 'salt and pepper cat',
+//         description: 'evil'
+//     }
+// })
+// .then(([pet,created])=>{
+//     //secod, lets get a reference to a toy
+//     db.toy.findOrCreate({
+//         where: {type:'snowman', color: 'offwhite'}
+//     })
+//     .then(([toy,created])=>{
+//         //finally associate the toy with the pet
+//         pet.addToy(toy)
+//         .then(createdRelation=>{
+//             console.log("createdRelation:", createdRelation)
+//             console.log(`${toy.type} added to ${pet.name}`)
+//         })
+//     })
+// })
