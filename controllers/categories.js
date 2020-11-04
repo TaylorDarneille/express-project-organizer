@@ -4,21 +4,23 @@ let router = express.Router()
 
 
 
-router.get('/new', (req, res) => {
-    res.render('projects/categories')
-  })
-
-  router.get('/:id', (req, res) => {
-    db.category.findOne({
-      where: { id: req.params.id }
-    })
+  router.get('/', (req, res) => {
+    db.category.findAll()
     .then((category) => {
-      if (!category) throw Error()
-      res.render('categories/show', { category: category })
+      res.render('categories/index', { category: category })
     })
     .catch((error) => {
+      console.log(error)
       res.status(400).render('main/404')
     })
   })
+
+  
+
+
+
+
+
+
 
   module.exports = router
