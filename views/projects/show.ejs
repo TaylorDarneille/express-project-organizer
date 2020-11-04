@@ -12,6 +12,20 @@
 
 <p><%= project.description %></p>
 
+<form action='/projects' method='POST'>
+
+    <input type="hidden" class="form-control" id="name" name="name" value='<%=project.name%>'>
+    <input type="hidden" class="form-control" id="githubLink" name="githubLink" value='<%=project.githubLink%>'>
+    <input type="hidden" class="form-control" id="deployedLink" name="deployedLink" value='<%=project.deployedLink%>'>
+    <input type="hidden" class="form-control" id="description" name="description" value='<%=project.description%>'>
+  <div class="form-group">
+    <label for="category">Category</label>
+    <input type="text" class="category" id="category" name="category" required></textarea>
+  </div>
+
+  <input type="submit" class="btn btn-primary">
+</form>
+
 <hr />
 
 <a href="/">&larr; Back Home</a>
