@@ -63,11 +63,14 @@ router.put('/:id', (req, res) => {
     where: {id: req.params.id}
   })
   .then(project => {
-    project.name = req.body.name
-    project.ErrorgithubLink = req.body.githubLink,
-    project.deployLink = req.body.deployedLink,
-    project.description = req.body.description
-    res.redirect('/')
+    project.update({
+      name: req.body.name,
+      githubLink: req.body.githubLink,
+      deployLink: req.body.deployedLink,
+      description: req.body.description
+    }).then(updated => {
+      res.redirect('/')
+    })
   })
 })
 
