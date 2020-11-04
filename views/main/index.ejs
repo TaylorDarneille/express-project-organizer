@@ -11,6 +11,9 @@
   <div class="well">
     <h2>
       <a href="/projects/<%= project.id %>"><%= project.name %></a>
+      <form method="POST" action="/projects/<%=project.id%>/?_method=DELETE">
+        <input type="submit" value="Delete">
+    </form>
     </h2>
   </div>
 <% }); %>

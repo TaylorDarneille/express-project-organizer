@@ -41,14 +41,6 @@ router.get('/:id', (req, res)=>{
     // })
 })
 
-router.delete('/:id' , (req, res)=>{
-    console.log(req.params.id, '<-------')
-    db.category.destroy({
-      where: {id: req.params.id}
-    }).then(()=>{
-      res.redirect('/categories')
-    })
-  })
 
 
 module.exports=router

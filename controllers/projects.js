@@ -67,4 +67,18 @@ router.get('/:id', (req, res) => {
   })
 })
 
+router.post('/:id' , (req, res)=>{
+  console.log(req.params.id, '<-------')
+  db.project.destroy({
+    where: {id: req.params.id}
+  }).then((numRowDeleted)=>{
+  console.log(numRowDeleted)
+    res.redirect('/')
+  })
+  .catch(err => {
+      console.log(err)
+  })
+})
+
+
 module.exports = router
