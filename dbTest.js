@@ -6,6 +6,7 @@ var async = require('async')
 //   name: 'node'
 // }).then(function(category) {
 //   console.log(category.get())
+//   console.log("here it is:", category.id)
 // })
 
 // Create a project and use the helper function create<ModelName> to create a category
@@ -25,7 +26,7 @@ var async = require('async')
 //     db.category.findOrCreate({
 //       where: { name: cat }
 //     })
-//     .spread((category, wasCreated) => {
+//     .then(([category, wasCreated]) => {
 //       project.addCategory(category)
 //       .then(() => {
 //         // res.redirect, or whatevs
@@ -41,24 +42,32 @@ var async = require('async')
 
 
 
-//   // TIMING DOESNOT WORK
-//   // cats.forEach((cat) => {
-//   //   db.category.findOrCreate({
-//   //     where: { name: cat }
-//   //   })
-//   //   .spread((category, wasCreated) => {
-//   //     project.addCategory(category)
-//   //     .then(() => {
-//   //       // res.redirect, or whatevs
-//   //       console.log('done adding', cat)
-//   //     })
-//   //   })
-//   // })
-//   // console.log('redirect or something')
+// //   // TIMING DOESNOT WORK
+// //   // cats.forEach((cat) => {
+// //   //   db.category.findOrCreate({
+// //   //     where: { name: cat }
+// //   //   })
+// //   //   .spread((category, wasCreated) => {
+// //   //     project.addCategory(category)
+// //   //     .then(() => {
+// //   //       // res.redirect, or whatevs
+// //   //       console.log('done adding', cat)
+// //   //     })
+// //   //   })
+// //   // })
+// //   // console.log('redirect or something')
 // })
-
-// db.category.create({
-//   name: 'node'
-// }).then(function(category) {
-//   console.log("here it is:", category.id)
+// db.project.findOrCreate({
+//     where: { id: 1 },
+//     include: [db.category]
+//   }).then(function(project) {
+//     // by using eager loading, the project model should have a categories key
+//     console.log(project.categories)
+  
+//     // addCategory function should be available to this model
+//     project.addCategory({ name: 'node' }).then(function(category) {
+//       console.log(category.id)
+//     }).catch(err=>{
+//         console.log(err)
+//     })
 // })
