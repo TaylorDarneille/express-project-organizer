@@ -1,0 +1,110 @@
+body {  /* INFO ABOUT THE BODY & BACKGROUND IMG */
+    background-image: url('https://cdn1.vectorstock.com/i/1000x1000/81/55/drawing-folder-file-document-information-vector-12278155.jpg');
+    background-repeat: no-repeat;
+    background-color:black;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    align-items: center;
+    width:100vw;
+  } 
+  
+
+ #div{
+    background-color: rgba(17, 3, 18, 0.7);
+ }
+
+
+ .well{
+    background-color: rgba(17, 3, 18, 0.3);
+    font-family:impact;
+    margin-left:100px;
+    margin-right:100px;
+    text-align:center;
+  }
+
+
+  .well:hover{
+    background-color: #cab921; 
+    color:white;
+    transform: skew(-10deg);;
+  }
+
+ #ProjectHeader{
+    color:white;
+    font-size:35px;
+  }
+
+
+  #ProjectName{
+    color:white;
+    font-size:35px;
+  }
+
+
+  #project{
+    background-color: rgba(17, 3, 18, 0.9);
+    color:white;
+    text-align:center;
+    font-family:impact;
+  }
+  
+#ugly{
+  color:white;
+}
+
+
+a {
+  color:white;
+}
+
+
+#CatHeader{
+  background-color: rgba(17, 3, 18, 0.9);
+  margin-left:100px;
+  margin-right:100px;
+  height:70px;
+  color:white;
+  text-align:center;
+  font-family:impact;
+}
+
+
+#projectHeader{
+  margin-left:100px;
+  margin-right:100px;
+  height:70px;
+  color:black;
+  background-color:white;
+  text-align:center;
+  font-family:impact;
+}
+
+
+.form-group{
+  font-size:15px;
+  margin-right:300px;
+  
+}
+
+#githubLink{
+  background-color: rgba(252, 250, 252, 0.608);
+}
+
+#deployedLink{
+  background-color: rgba(252, 250, 252, 0.608);
+}
+
+#name{
+  background-color: rgba(252, 250, 252, 0.608);
+}
+
+#description{
+  background-color: rgba(252, 250, 252, 0.608);
+}
+
+#categoryLink{
+  background-color: rgba(252, 250, 252, 0.608);
+}

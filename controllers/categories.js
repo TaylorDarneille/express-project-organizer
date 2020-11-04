@@ -20,33 +20,40 @@ router.get('/', (req, res) => {
 
 
 
+//this gives me all the projects and their categories/;
 
-
-
-
-
-
-
-
-
-// GET /projects/:id - display a specific project
 // router.get('/:id', (req, res) => {
-//     db.project.findOne({
-//       where: { id: req.params.id }
+//     db.project.findAll({
+//         include: [db.category]
 //     })
-//     .then((project) => {
-//       if (!project) throw Error()
-//       res.render('projects/show', { project: project })
+//     .then(foundProjects=>{
+//         foundProjects.forEach(project=>{
+//             console.log(`${project.name} 's categories:`)
+//             project.categories.forEach(category=>{
+//                 console.log(category.name, category.id)
+//             })
+//         })
 //     })
-//     .catch((error) => {
-//       console.log(error)
-//     })
-//   })
+// })
 
 
 
-
-
+ router.get('/:id', (req, res) => {
+    db.category.findOne({
+        where: {id: req.params.id},
+        include:[db.project]
+      })
+        .then(foundCategory=>{
+            foundCategory.projects.forEach(project=>{
+                console.log(`${foundCategory.name}, has these projects ${project.name}`)
+                res.render('categories/show', { foundCategory: foundCategory, project:project})
+            })
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+ })
+   
 
 
 

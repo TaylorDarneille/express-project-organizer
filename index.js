@@ -3,6 +3,7 @@ let express = require('express')
 let ejsLayouts = require('express-ejs-layouts')
 let db = require('./models')
 let app = express()
+app.use(express.static(__dirname + '/public/'))
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
