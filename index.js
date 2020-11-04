@@ -3,10 +3,12 @@ let express = require('express')
 let ejsLayouts = require('express-ejs-layouts')
 let db = require('./models')
 let app = express()
+const methodOverride = require('method-override')
 
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(ejsLayouts)
+app.use(methodOverride('_method'))
 
 app.get('/', (req, res) => {
   db.project.findAll()

@@ -49,4 +49,26 @@ router.get('/:id', (req, res) => {
   })
 })
 
+router.get('/edit/:id', (req, res) => {
+  db.project.findOne({
+    where: {id: req.params.id}
+  })
+  .then(project => {
+    res.render('projects/edit', {project: project})
+  })
+})
+
+router.put('/:id', (req, res) => {
+  db.project.findOne({
+    where: {id: req.params.id}
+  })
+  .then(project => {
+    project.name = req.body.name
+    project.ErrorgithubLink = req.body.githubLink,
+    project.deployLink = req.body.deployedLink,
+    project.description = req.body.description
+    res.redirect('/')
+  })
+})
+
 module.exports = router

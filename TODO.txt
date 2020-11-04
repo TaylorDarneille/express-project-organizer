@@ -1,4 +1,4 @@
-put a link to edit a project
-redirect to an edit project view
-use a put route to update
+why is edit form redirecting with no error but info is not being edited
+why are full values not showing in edit form
 
+stuck trying to get edit route to work
