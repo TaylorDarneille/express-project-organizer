@@ -1,8 +1,8 @@
 <h1>View Projects by Category</h1>
   <% data.forEach(function(category) { %>
-    <div class="well">
+    <div class="well project">
       <h4>
-        <a href="/categories/<%= category.id %>"><%= category.name %></a>
+        <a class="project__link" href="/categories/<%= category.id %>"><%= category.name %></a>
       </h4>
     </div>
   <% }); %>

@@ -1,7 +1,7 @@
 <h2>Projects Built with <%=category.name %></h2>
   <% category.projects.forEach(project=>{ %>
-    <div class="well">
-      <a href='/projects/<%=project.id%>'>
+    <div class="well project">
+      <a class="project__link" href='/projects/<%=project.id%>'>
         <%= project.name %>
       </a>
     </div>
