@@ -45,15 +45,6 @@ app.get("/categories/:idx", (req,res)=> {
     console.log("I am in here now")
     if (!categories) throw Error()
     console.log("categories", categories)
-    // db.project.findAll({
-    //   where: {
-    //     id: req.params.idx
-    //   },
-    //   include: [db.project, db.category]
-    // })
-    // .then((project)=> {
-    //   res.render('categories/show', { categories: categories, project: project})
-    // })
     res.render('categories/show', { categories: categories})
   })
   .catch((error) => {
