@@ -2,6 +2,9 @@ let express = require ('express')
 let db= require ('../models')
 let router = express.Router()
 
+
+
+/////A route to get all categories and show them on one page
 router.get('/', (req, res) => {
     db.category.findAll()
     .then(categories=>{
@@ -10,7 +13,7 @@ router.get('/', (req, res) => {
     
   })
   
-
+///// A route to get one category at index and show the projects that belong to it
 router.get('/:id', (req, res) => {
     db.category.findOne({
       where: {
@@ -28,5 +31,9 @@ router.get('/:id', (req, res) => {
       })
     })
   })
+
+
+
+  
 
   module.exports = router

@@ -8,6 +8,7 @@ let app = express()
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(ejsLayouts)
+app.use(express.static(__dirname + '/public/'))
 
 app.get('/', (req, res) => {
   db.project.findAll()
