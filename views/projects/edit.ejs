@@ -26,15 +26,15 @@
 
   <div class="input-group vertical">
       <label for="category">Category</label>
-      <input type="text" id="category" name="category" value="
+      <input type="text" id="category" name="category" value=
         <% if(project.categories) { %>
           <% const nameArr = [] %>
             <% project.categories.forEach(category => { %>
               <% nameArr.push(category.name) %>
             <% }) %>
-          <%= nameArr.toString() %>
+          "<%= nameArr.toString() %>"
         <% } %>
-      " required>
+       required>
   </div>
 
   <input type="submit" class="button primary">
