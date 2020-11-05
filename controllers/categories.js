@@ -13,7 +13,19 @@ router.get('/', (req, res) => {
     })
   })
 
-
+router.get('/:id', (req, res)=>{
+  db.category.findOne({
+    include: [db.project],
+    where: {id: req.params.id}
+  })
+  .then(category=>{
+    res.render('categories/show', { category: category })
+  })
+  .catch((error) => {
+    console.log(error)
+    res.status(400).render('main/404')
+  })
+})
 
 
 

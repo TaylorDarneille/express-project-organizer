@@ -8,10 +8,18 @@ router.post('/', (req, res) => {
     name: req.body.name,
     githubLink: req.body.githubLink,
     deployLink: req.body.deployedLink,
-    category: req.body.category,
     description: req.body.description
   })
   .then((project) => {
+    db.category.findOrCreate({
+      where: {name: req.body.category}
+    })
+    .then(([category, created])=>{
+      project.addCategory(category)
+      .then(createdRelation=>{
+        console.log(`${category.name} added to ${project.name}`)
+      })
+    })
     res.redirect('/')
   })
   .catch((error) => {
@@ -31,10 +39,15 @@ router.get('/:id', (req, res) => {
   })
   .then((project) => {
     if (!project) throw Error()
-    res.render('projects/show', { project: project })
+    project.getCategories()
+    .then(categories=>{
+      console.log(categories)
+      res.render('projects/show', { project: project, categories: categories })
+    })
   })
   .catch((error) => {
-    res.status(400).render('main/404')
+    console.log(error)
+    // res.status(400).render('main/404')
   })
 })
 
