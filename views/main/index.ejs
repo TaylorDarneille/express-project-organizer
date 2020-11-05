@@ -3,6 +3,27 @@
 <h2>My Projects</h2>
 <hr>
 
+<% projects.forEach(function(project) { %>
+  <div class="well">
+    <h2>
+      <a href="/projects/<%= project.id %>"><%= project.name %></a>
+    </h2>
+    <form action="/projects" method="POST">
+        <input type="hidden" class="form-control" id="name" name="name" value = <%=project.name %>>
+        <input type="hidden" class="form-control" id="githubLink" name="githubLink" value = <%=project.githubLink %>>
+        <input type="hidden" class="form-control" id="deployedLink" name="deployedLink" value = <%=project.deployLink %>>
+        <input type="hidden" class="form-control" id="description" name="description" value = <%=project.description %>>
+      
+        <div class="form-group">
+          <label for="category">Category</label>
+          <input type="text" class="form-control" id="category" name="category" required>
+        </div>
+    
+      <input type="submit" class="btn btn-primary">
+    </form>
+  </div>
+<% }); %>
+
 <% if (projects.length < 1) { %>
   <h4>Better get coding, I've no projects!</h4>
 <% } %>

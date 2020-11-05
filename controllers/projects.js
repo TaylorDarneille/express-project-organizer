@@ -10,7 +10,20 @@ router.post('/', (req, res) => {
     deployLink: req.body.deployedLink,
     description: req.body.description
   })
-  .then((project) => {
+  .then(project => {
+    db.category.findOrCreate({
+      where: {
+        name: req.body.category
+      }
+    })
+    .then(([category, created])=>{
+      project.addCategory(category)
+      .then(relationInfo=>{
+        console.log(`${category.name} added to ${project.name}`)
+      })
+    })
+  })
+  .then (project=>{
     res.redirect('/')
   })
   .catch((error) => {
