@@ -1,4 +1,4 @@
-config.json
+config/config.json
 .env
 
 # Created by https://www.gitignore.io/api/node,osx,linux
