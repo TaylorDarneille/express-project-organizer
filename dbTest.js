@@ -36,6 +36,7 @@ db.project.create({
   }, () => {
     console.log('EVERYTHING is done. Now redirect or something')
   })
+  
 })
 
 
