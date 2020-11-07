@@ -4,6 +4,7 @@ let ejsLayouts = require('express-ejs-layouts')
 let db = require('./models')
 let app = express()
 
+app.use(express.static('public'))
 app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(ejsLayouts)
