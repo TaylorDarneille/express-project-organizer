@@ -19,13 +19,13 @@ db.project.create({
   githubLink: 'http://github.com/brandiw',
   description: 'This was a game'
 }).then(function(project) {
-  // IMPROVED VERSION WITH ASYNC
-  // async.forEach(arrayToIterate, iteratorFunctionToRunOnEachItem(item, callback), functionToRunWhenAllComplete)
+//   // IMPROVED VERSION WITH ASYNC
+//   // async.forEach(arrayToIterate, iteratorFunctionToRunOnEachItem(item, callback), functionToRunWhenAllComplete)
   async.forEach(cats, (cat, done) => {
     db.category.findOrCreate({
       where: { name: cat }
     })
-    .spread((category, wasCreated) => {
+    .then(([category, wasCreated]) => {
       project.addCategory(category)
       .then(() => {
         // res.redirect, or whatevs
@@ -36,7 +36,7 @@ db.project.create({
   }, () => {
     console.log('EVERYTHING is done. Now redirect or something')
   })
-
+})
 
 
 
@@ -55,4 +55,4 @@ db.project.create({
   //   })
   // })
   // console.log('redirect or something')
-})
+// })
