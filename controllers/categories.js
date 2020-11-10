@@ -1,8 +1,8 @@
 let express = require('express')
 let db = require('../models')
 let router = express.Router()
-​
-router.get('/', (req, res)=>{
+
+router.get('/index', (req, res)=>{
     db.category.findAll()
     .then((categories)=>{
         //render to category index, pass in category in the route
@@ -12,7 +12,7 @@ router.get('/', (req, res)=>{
         console.log(err)
     })
 })
-​
+
 router.get('/:id', (req, res)=>{
     // res.send('hellooooooooo')
     console.log(req.params.id)
@@ -40,7 +40,5 @@ router.get('/:id', (req, res)=>{
     //     console.log('ERROR <=========', err)
     // })
 })
-​
-​
-​
+
 module.exports=router
