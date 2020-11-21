@@ -14,4 +14,12 @@
 
 <hr />
 
+<form method="POST" action="/projects/addCategory">
+  Category 
+  <input type="text" name="newCategory" id="newCategory">
+  <input type="hidden" name="projectId" value="<%= project.id %>" id="projectId">
+  <br>
+  <input type="submit" value="Add new category">
+</form>
+
 <a href="/">&larr; Back Home</a>

@@ -3,10 +3,26 @@ var async = require('async')
 
 // DO THIS FIRST
 // Create a category: Category model must exist and be migrated
-db.category.create({
+/*db.category.create({
   name: 'node'
 }).then(function(category) {
   console.log(category.get())
+})*/
+
+db.project.findOne({
+  where: { id: 1 },
+  include: [db.category]
+}).then(function(project) {
+  // by using eager loading, the project model should have a categories key
+  console.log('????/?' + project.categories)
+
+  // addCategory function should be available to this model
+  project.createCategory({ name: 'javascript' }).then(function(category) {
+    console.log('!!!!!' + category.id)
+  })
+  .catch((err)=>{
+    console.log('err has been caught')
+  })
 })
 
 // DO THIS SECOND
